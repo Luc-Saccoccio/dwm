@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cat <<EOF | xmenu
+[]= Tiled Layout 		0
+><> Floating Layout 		1
+[M] Monocle Layout 		2
+[@] Spiral Layout 		3
+[\\] Dwindle Layout 		4
+TTT Bottomstack Layout  	5
+=== Horizontalstack Layout 	6
+### Gapless Grid Layout 	7
+|+| Tatami Layout 		8
+||| Three Column Layout   	9
+EOF

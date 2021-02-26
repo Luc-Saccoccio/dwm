@@ -12,21 +12,21 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char startup[] = "$HOME/.local/bin/startup.sh";
-static char *fonts[]          = { "Minecraft-Regular:size=12" };
+static char *fonts[]          = { "SpaceMono Nerd Font:style=Regular:size=10", "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#282c34";
+static const char col_gray2[]       = "#353b45";
+static const char col_gray3[]       = "#3e4451";
+static const char col_white[]       = "#abb2bf";
+static const char col_blue[]        = "#61afef";
 static const char *colors[][3]      = {
 	/*               fg          bg         border   */
-	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]   = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm]  = { col_white, col_gray1, col_gray3 },
+	[SchemeSel]   = { col_white, col_gray2, col_blue  },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+static const char *tags[] = { "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -50,9 +50,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5;  /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 #include "fibonacci.c"
 #include "gaplessgrid.c"
@@ -114,11 +114,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_i,				spawn,		SHCMD("current-wal")}, 
 	{ MODKEY,			XK_i,				spawn,		SHCMD("random-wall")}, 
 	{ MODKEY,			XK_w,				spawn,		SHCMD("walc")}, 
-	{ 0,				XF86XK_AudioPlay,		spawn,		SHCMD("mpd-control toggle")}, 
-	{ 0,				XF86XK_AudioPause,		spawn,		SHCMD("mpd-control toggle")}, 
-	{ 0,				XF86XK_AudioNext,		spawn,		SHCMD("mpd-control next")}, 
-	{ 0,				XF86XK_AudioPrev,		spawn,		SHCMD("mpd-control prev")}, 
-	{ 0,				XF86XK_AudioStop,		spawn,		SHCMD("mpd-control stop")}, 
+	{ MODKEY|ShiftMask,		XK_w,				spawn,		SHCMD("livewalc")},
+	{ 0,				XF86XK_AudioPlay,		spawn,		SHCMD("mpc toggle")}, 
+	{ 0,				XF86XK_AudioPause,		spawn,		SHCMD("mpc toggle")}, 
+	{ 0,				XF86XK_AudioNext,		spawn,		SHCMD("mpc next")}, 
+	{ 0,				XF86XK_AudioPrev,		spawn,		SHCMD("mpc prev")}, 
+	{ 0,				XF86XK_AudioStop,		spawn,		SHCMD("mpc stop")}, 
 	{ 0,				XF86XK_MonBrightnessDown,	spawn,		SHCMD("backlight-control dec")}, 
 	{ 0,				XF86XK_MonBrightnessUp,		spawn,		SHCMD("backlight-control inc")}, 
 	{ MODKEY,			XK_b,				spawn,		SHCMD("toggle-screenkey")}, 

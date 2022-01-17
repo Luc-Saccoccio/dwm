@@ -5,6 +5,7 @@
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
@@ -33,14 +34,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	*/
-	/* class    	      instance       title      tags mask      iscentered     isfloating  monitor */
-	{ "discord",          NULL,          NULL,      1 << 1,        0,             0,          -1 },
-	{ "Nsxiv",    	      NULL,	         NULL,    	0,	           0,             1,	        -1 },
-	{ "floating",         NULL,	         NULL,    	0,	           1,             1,	        -1 },
-	{ "St",               NULL,          NULL,      0,             0,             0,          -1 },
-	{ "mpv",              NULL,          NULL, 	    0,             0,             1,          -1 },
-	{ "Pavucontrol",      NULL,          NULL,      0,     	       0,             1,          -1 },
-	{ "Pdf2png",          NULL,          NULL,      0,             0,             1,          -1 },
+	/* class    	      instance       title      tags mask      iscentered     isfloating  isterminal  noswallow  monitor */
+	{ "discord",          NULL,          NULL,      1 << 1,        0,             0,        0,           0,          -1 },
+	{ "Nsxiv",    	      NULL,	         NULL,    	0,	           0,             1,	      0,           1,          -1 },
+	{ "floating",         NULL,	         NULL,    	0,	           1,             1,	      0,           0,          -1 },
+	{ "St",               NULL,          NULL,      0,             0,             0,        1,           0,          -1 },
+	{ "mpv",              NULL,          NULL, 	    0,             0,             1,        0,           0,          -1 },
+	{ "Pavucontrol",      NULL,          NULL,      0,     	       0,             1,        0,           1,          -1 },
+	{ "Pdf2png",          NULL,          NULL,      0,             0,             1,        0,           0,          -1 },
+  { "Firefox",          NULL,          NULL,      0,             0,             0,        0,          -1,          -1 },
+	{ NULL,               NULL,         "Event Tester", 0,         0,             0,        1,          -1,          -1 }, /* xev */
 };
 
 /* layout(s) */

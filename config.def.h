@@ -12,7 +12,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char startup[] = "$HOME/.local/bin/startup.sh";
-static char *fonts[]          = { "SpaceMono Nerd Font:style=Regular:size=10", "monospace:size=10" };
+static char *fonts[]          = { "SpaceMono Nerd Font:style=Regular:size=11", "monospace:size=11" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#282c34";
 static const char col_gray2[]       = "#353b45";
@@ -34,20 +34,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	*/
 	/* class    	      instance       title      tags mask      iscentered     isfloating  monitor */
-	{ "vimus",	      NULL,	     NULL,	1 << 0,	       0,	      0,	  -1 },
-	{ "newsboat",	      NULL,	     NULL,	1 << 9,	       0,	      0,	  -1 },
-	{ "calcurse",	      NULL,	     NULL,	1 << 8,	       0,	      0,	  -1 },
-	{ "Gimp",  	      NULL,	     NULL,	1 << 7,        0,             0,          -1 },
 	{ "discord",          NULL,          NULL,      1 << 1,        0,             0,          -1 },
-	{ "Sxiv",	      NULL,	     NULL,	0,	       0,             1,	  -1 },
-	{ "floating",         NULL,	     NULL,	0,	       1,             1,	  -1 },
-	{ "*:*:OCaml graphics", 	      NULL,          NULL,      0,             1,             1,          -1 },
-	{ "Gpick",            NULL,          NULL,      0,  	       0,             1,          -1 },
+	{ "Nsxiv",    	      NULL,	         NULL,    	0,	           0,             1,	        -1 },
+	{ "floating",         NULL,	         NULL,    	0,	           1,             1,	        -1 },
 	{ "St",               NULL,          NULL,      0,             0,             0,          -1 },
-	{ "mpv",              NULL,          NULL, 	0,             0,             1,          -1 },
+	{ "mpv",              NULL,          NULL, 	    0,             0,             1,          -1 },
 	{ "Pavucontrol",      NULL,          NULL,      0,     	       0,             1,          -1 },
 	{ "Pdf2png",          NULL,          NULL,      0,             0,             1,          -1 },
-	{ "hakuneko-desktop", NULL,          NULL,      0,             0,             1,          -1 },
 };
 
 /* layout(s) */
@@ -107,9 +100,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_t,	   			spawn,	   	SHCMD("firefox")},
 	{ 0,				XK_Print,  			spawn,	   	SHCMD("perscrot")},
 	{ MODKEY|ShiftMask,		XK_Print,  			spawn,	   	{.v = pscrot } },
-	{ 0,				XF86XK_AudioLowerVolume,  	spawn,	   	SHCMD("amixer set Master 1%-")},
-	{ 0,				XF86XK_AudioRaiseVolume,  	spawn,	   	SHCMD("amixer set Master 1%+")},
+	{ 0,				XF86XK_AudioLowerVolume,  	spawn,	   	SHCMD("amixer -q set Master 1%-")},
+	{ 0,				XF86XK_AudioRaiseVolume,  	spawn,	   	SHCMD("amixer -q set Master 1%+")},
 	{ 0,				XF86XK_AudioMute,  		spawn,		SHCMD("amixer -q set Master toggle")},
+  { 0,        XF86XK_AudioMicMute,  spawn,    SHCMD("amixer -q set Capture toggle")},
 	{ MODKEY|ShiftMask,		XK_e,				spawn,		SHCMD("powermenu")},
 	{ MODKEY|ShiftMask,		XK_z,				spawn,		SHCMD("lock.sh")},
 	{ MODKEY|ShiftMask,		XK_i,				spawn,		SHCMD("current-wal")},
@@ -126,9 +120,8 @@ static Key keys[] = {
 	{ 0,				XF86XK_AudioStop,		spawn,		SHCMD("mpc stop")},
 	{ 0,				XF86XK_MonBrightnessDown,	spawn,		SHCMD("backlight-control dec")},
 	{ 0,				XF86XK_MonBrightnessUp,		spawn,		SHCMD("backlight-control inc")},
+	{ 0,				XF86XK_ScreenSaver,		spawn,		SHCMD("xscreensaver-command --lock")},
 	{ MODKEY,			XK_b,				spawn,		SHCMD("toggle-screenkey")},
-	{ MODKEY,			XK_F1,				spawn,		SHCMD("dmenufm /home/luc/.local/share/documents/")},
-	{ MODKEY,			XK_F1,				spawn,		SHCMD("dmenufm /home/luc/work/")},
 	{ MODKEY,                       XK_q,      			togglebar,      {0} },
 	{ MODKEY,                       XK_Left,   			focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Right,  			focusstack,     {.i = -1 } },
@@ -157,7 +150,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_underscore,             			7)
 	TAGKEYS(                        XK_ccedilla,               			8)
 	TAGKEYS(			XK_agrave,		   			9)
-	{ MODKEY|ShiftMask,             XK_q,      			quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_BackSpace,      			quit,           {0} },
 };
 
 /* button definitions */

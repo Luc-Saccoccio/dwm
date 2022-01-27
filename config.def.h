@@ -36,11 +36,11 @@ static const Rule rules[] = {
 	*/
 	/* class    	      instance       title      tags mask      iscentered     isfloating  isterminal  noswallow  monitor */
 	{ "discord",          NULL,          NULL,      1 << 1,        0,             0,        0,           0,          -1 },
-	{ "Nsxiv",    	      NULL,	         NULL,    	0,	           0,             1,	      0,           1,          -1 },
+	{ "Nsxiv",    	      NULL,	         NULL,    	0,	           0,             1,	      0,           0,          -1 },
 	{ "floating",         NULL,	         NULL,    	0,	           1,             1,	      0,           0,          -1 },
 	{ "St",               NULL,          NULL,      0,             0,             0,        1,           0,          -1 },
 	{ "mpv",              NULL,          NULL, 	    0,             0,             1,        0,           0,          -1 },
-	{ "Pavucontrol",      NULL,          NULL,      0,     	       0,             1,        0,           1,          -1 },
+	{ "Pavucontrol",      NULL,          NULL,      0,     	       0,             1,        0,           0,          -1 },
 	{ "Pdf2png",          NULL,          NULL,      0,             0,             1,        0,           0,          -1 },
   { "Firefox",          NULL,          NULL,      0,             0,             0,        0,          -1,          -1 },
 	{ NULL,               NULL,         "Event Tester", 0,         0,             0,        1,          -1,          -1 }, /* xev */
@@ -95,6 +95,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      			spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                XK_Return, 			spawn,          SHCMD("st") },
 	{ MODKEY|ShiftMask,		XK_Return, 			spawn,	   	{.v = ftermcmd } },
+  { MODKEY,             XK_space,       layoutmenu,     {0}},
 	{ MODKEY|ShiftMask,		XK_d,	   			spawn,	   	SHCMD("networkmanager_dmenu")},
 	{ MODKEY|ShiftMask,		XK_m,	   			spawn,	   	SHCMD("clipmenu")},
 	{ MODKEY|ShiftMask,		XK_p,	   			spawn,	   	SHCMD("dmenuunicode")},
